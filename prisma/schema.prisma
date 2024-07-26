@@ -16,6 +16,8 @@ model Trip {
   created_at   DateTime @default(now())
 
   participant Participant[]
+  activity    Activity[]
+  link        Link[]
 }
 
 model Participant {
@@ -25,6 +27,24 @@ model Participant {
   is_confirmed Boolean @default(false)
   is_owner     Boolean @default(false)
   trip_id      String
+
+  trip Trip @relation(fields: [trip_id], references: [id], onDelete: Cascade)
+}
+
+model Activity {
+  id        String   @id @default(uuid())
+  title     String
+  occurs_at DateTime
+  trip_id   String
+
+  trip Trip @relation(fields: [trip_id], references: [id], onDelete: Cascade)
+}
+
+model Link {
+  id      String @id @default(uuid())
+  title   String
+  url     String
+  trip_id String
 
   trip Trip @relation(fields: [trip_id], references: [id], onDelete: Cascade)
 }
