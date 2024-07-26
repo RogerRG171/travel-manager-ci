@@ -8,6 +8,7 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 import { confirmTrip } from './routes/confirm-trip'
+import { confirmParticipant } from './routes/confirm-participant'
 
 const app = fastify()
 
@@ -29,6 +30,7 @@ const HOST = process.env.HOST as string
 app.register(createTrip)
 app.register(getTrips)
 app.register(confirmTrip)
+app.register(confirmParticipant)
 
 app.listen({ port: PORT, host: HOST }).then(() => {
   console.log(`HTTP server running on http://${HOST}:${PORT}`)
