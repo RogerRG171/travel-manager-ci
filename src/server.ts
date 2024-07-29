@@ -9,6 +9,8 @@ import {
 } from 'fastify-type-provider-zod'
 import { confirmTrip } from './routes/confirm-trip'
 import { confirmParticipant } from './routes/confirm-participant'
+import { createActivity } from './routes/create-actitvity'
+import { getActivities } from './routes/get-activities'
 
 const app = fastify()
 
@@ -31,6 +33,8 @@ app.register(createTrip)
 app.register(getTrips)
 app.register(confirmTrip)
 app.register(confirmParticipant)
+app.register(createActivity)
+app.register(getActivities)
 
 app.listen({ port: PORT, host: HOST }).then(() => {
   console.log(`HTTP server running on http://${HOST}:${PORT}`)
