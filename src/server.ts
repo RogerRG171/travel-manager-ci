@@ -14,6 +14,7 @@ import { getActivities } from './routes/get-activities'
 import { createLink } from './routes/create-link'
 import { getLinks } from './routes/get-links'
 import { getPartcipants } from './routes/get-participants'
+import { createInvite } from './routes/create-invite'
 
 const app = fastify()
 
@@ -41,6 +42,7 @@ app.register(getActivities)
 app.register(createLink)
 app.register(getLinks)
 app.register(getPartcipants)
+app.register(createInvite)
 
 app.listen({ port: PORT, host: HOST }).then(() => {
   console.log(`HTTP server running on http://${HOST}:${PORT}`)
