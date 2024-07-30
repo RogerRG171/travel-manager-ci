@@ -18,6 +18,7 @@ import { createInvite } from './routes/create-invite'
 import { updatetrip } from './routes/update-trip'
 import { getTripDetails } from './routes/get-trip-details'
 import { getPartcipantDetails } from './routes/get-participant-detail'
+import { errorhandler } from './error-handler'
 
 const app = fastify()
 
@@ -34,6 +35,9 @@ app.setSerializerCompiler(serializerCompiler)
 dotenv.config({ path: '.env' })
 const PORT = parseInt(process.env.PORT as string)
 const HOST = process.env.HOST as string
+
+// error handler
+app.setErrorHandler(errorhandler)
 
 // routes
 app.register(createTrip)
