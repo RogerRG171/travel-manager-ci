@@ -17,6 +17,7 @@ import { getPartcipants } from './routes/get-participants'
 import { createInvite } from './routes/create-invite'
 import { updatetrip } from './routes/update-trip'
 import { getTripDetails } from './routes/get-trip-details'
+import { getPartcipantDetails } from './routes/get-participant-detail'
 
 const app = fastify()
 
@@ -47,6 +48,7 @@ app.register(getPartcipants)
 app.register(createInvite)
 app.register(updatetrip)
 app.register(getTripDetails)
+app.register(getPartcipantDetails)
 
 app.listen({ port: PORT, host: HOST }).then(() => {
   console.log(`HTTP server running on http://${HOST}:${PORT}`)
