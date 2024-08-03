@@ -1,6 +1,5 @@
 -- RedefineTables
-PRAGMA defer_foreign_keys=ON;
-PRAGMA foreign_keys=OFF;
+
 CREATE TABLE "new_Participant" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT,
@@ -13,5 +12,4 @@ CREATE TABLE "new_Participant" (
 INSERT INTO "new_Participant" ("email", "id", "is_confirmed", "is_owner", "name", "trip_id") SELECT "email", "id", "is_confirmed", "is_owner", "name", "trip_id" FROM "Participant";
 DROP TABLE "Participant";
 ALTER TABLE "new_Participant" RENAME TO "Participant";
-PRAGMA foreign_keys=ON;
-PRAGMA defer_foreign_keys=OFF;
+

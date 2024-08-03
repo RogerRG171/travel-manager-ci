@@ -2,7 +2,7 @@
 CREATE TABLE "Activity" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
-    "occurs_at" DATETIME NOT NULL,
+    "occurs_at" TIMESTAMP NOT NULL,
     "trip_id" TEXT NOT NULL,
     CONSTRAINT "Activity_trip_id_fkey" FOREIGN KEY ("trip_id") REFERENCES "Trip" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
