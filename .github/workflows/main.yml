@@ -25,14 +25,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
-      - name: Build docker image
-        run: |
-          docker build -t roger171/backend-api-travel-manager:${{ steps.generate_sha.outputs.sha }} .
 
-
-      - name: Push image
-        run: |
-          docker push roger171/backend-api-travel-manager:${{ steps.generate_sha.outputs.sha }}
-          docker tag roger171/backend-api-travel-manager:${{ steps.generate_sha.outputs.sha }} roger171/backend-api-travel-manager:latest
-          docker push roger171/backend-api-travel-manager:latest
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            roger171/backend-api-travel-manager:${{ steps.generate_sha.outputs.sha }}
+            roger171/backend-api-travel-manager:latest
