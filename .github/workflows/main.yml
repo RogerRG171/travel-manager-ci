@@ -14,7 +14,7 @@ jobs:
 		- name: Checkout
 			uses: actions/checkout@v4
 
-		- name: Generate sha
+		- name: Generate tag sha
 			id: generate_sha
 			run: |
 				SHA=$(echo $GITHUB_SHA | head -c7)
