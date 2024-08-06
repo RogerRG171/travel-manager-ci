@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: travel-deployment
+  labels:
+    app: travel
+    
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: travel
+
+  template:
+    metadata:
+      labels:
+        app: travel
+
+    spec:
+      containers:
+        - name: api-travel-manager
+          image: roger171/backend-api-travel-manager:3d59edb
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: travel-secret
+                  key: DATABASE_URL
+            - name: HOST
+              valueFrom:
+                secretKeyRef:
+                  name: travel-secret
+                  key: HOST
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: travel-secret
+                  key: PORT
+            - name: FRONT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: travel-secret
+                  key: FRONT_URL
+          ports:
+            - containerPort: 3333
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi

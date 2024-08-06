@@ -4,3 +4,4 @@ dist
 .env
 prisma/dev.db
 prisma/dev.db-journal
+k8s/secret.yaml
