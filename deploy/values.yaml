@@ -2,7 +2,7 @@ replicaCount: 3
 image:
   repository: roger171/backend-api-travel-manager
   pullPolicy: IfNotPresent
-  tag: bb30569
+  tag: 0f38be1
   containerPort: 3333
 imagePullSecrets: []
 nameOverride: ''
