@@ -34,3 +34,15 @@ jobs:
           tags: |
             roger171/backend-api-travel-manager:${{ steps.generate_sha.outputs.sha }}
             roger171/backend-api-travel-manager:latest
+
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          branch: release
+          targetBranch: main
+          createPR: true
+          valueFile: 'deploy/values.yaml'
+          propertyPath: 'image.tag'
+          value: ${{ steps.generate_sha.outputs.sha }}
+          commitChange: true
+          message: 'New update tag in values helm'
